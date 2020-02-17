@@ -8,13 +8,17 @@ function App() {
 
   const [home, setHome] = useState(0);
   const [away, setAway] = useState(0);
+  const [quarter, setQuater] = useState(1);
+
+  const homeTeam = 'Bears';
+  const awayTeam = 'Rhinos';
 
   return (
     <div className="container">
       <section className="scoreboard">
         <div className="topRow">
           <div className="home">
-            <h2 className="home__name">Lions</h2>
+            <h2 className="home__name">{homeTeam}</h2>
 
             {/* TODO STEP 3 - We need to change the hardcoded values in these divs to accept dynamic values from our state. */}
 
@@ -22,7 +26,7 @@ function App() {
           </div>
           <div className="timer">00:03</div>
           <div className="away">
-            <h2 className="away__name">Tigers</h2>
+            <h2 className="away__name">{awayTeam}</h2>
             <div className="away__score">{away}</div>
           </div>
         </div>
@@ -38,7 +42,12 @@ function App() {
           <button onClick={()=> setAway(away + 7)} className="awayButtons__touchdown">Away Touchdown</button>
           <button onClick={()=> setAway(away + 3)}className="awayButtons__fieldGoal">Away Field Goal</button>
         </div>
+        {/* <div className="awayButtons">
+          <button onClick={()=> setQuater(quarter + 1)} className="awayButtons__touchdown">Quarter up</button>
+          <button onClick={()=> setQuater(quarter - 1)} className="awayButtons__touchdown">Quarter down</button>
+        </div> */}
       </section>
+
     </div>
   );
 }

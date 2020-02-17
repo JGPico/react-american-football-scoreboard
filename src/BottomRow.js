@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 
 const BottomRow = () => {
+
+
   return (
     <div className="bottomRow">
       <div className="down">
@@ -20,7 +22,9 @@ const BottomRow = () => {
         <h3 className="quarter__title">Quarter</h3>
         <div className="quarter__value">4</div>
       </div>
+
     </div>
+
   );
 };
 

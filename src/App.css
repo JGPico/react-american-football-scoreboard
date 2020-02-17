@@ -80,6 +80,13 @@
   height: 20rem;
 }
 
+.bottomButtons {
+  display: flex;
+  justify-content: space-around;
+  place-items: center;
+  height: 20rem;
+}
+
 .down,
 .toGo,
 .ballOn,
