@@ -1,5 +1,5 @@
 //TODO: STEP 1 - Import the useState hook.
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 
@@ -8,7 +8,26 @@ function App() {
 
   const [home, setHome] = useState(0);
   const [away, setAway] = useState(0);
-  const [quarter, setQuater] = useState(1);
+  const [second, setSecond] = useState(0);
+  //const [tens, setTens] = useState(0);
+  //const [minute, setMinute] = useState(0);
+  //const [tenMinute, setTenMinute] = useState(0);
+  const [isRunning, setIsRunning] = useState(true);
+  //const [quarter, setQuater] = useState(1);
+
+  useEffect(()=> {
+
+    if (isRunning) {
+      const id = setInterval(()=> {
+        setSecond(second => second + 1);
+      }, 1000);
+      return () => clearInterval(id);
+    }
+    return undefined;
+  }, [isRunning]);  
+
+
+  
 
   const homeTeam = 'Bears';
   const awayTeam = 'Rhinos';
@@ -24,7 +43,7 @@ function App() {
 
             <div className="home__score">{home}</div>
           </div>
-          <div className="timer">00:03</div>
+          <div className="timer">00:{second}</div>
           <div className="away">
             <h2 className="away__name">{awayTeam}</h2>
             <div className="away__score">{away}</div>
@@ -41,6 +60,14 @@ function App() {
         <div className="awayButtons">
           <button onClick={()=> setAway(away + 7)} className="awayButtons__touchdown">Away Touchdown</button>
           <button onClick={()=> setAway(away + 3)}className="awayButtons__fieldGoal">Away Field Goal</button>
+        </div>
+        <div className="awayButtons">
+          {isRunning ? (
+            <button onClick={()=> setIsRunning(false)} className="awayButtons__touchdown">Stop Clock</button>
+          ) : (
+            <button onClick={()=> setIsRunning(true)} className="awayButtons__touchdown">Run Clock</button>
+          )} 
+          
         </div>
         {/* <div className="awayButtons">
           <button onClick={()=> setQuater(quarter + 1)} className="awayButtons__touchdown">Quarter up</button>
